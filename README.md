@@ -1,11 +1,9 @@
 # Volatility Surface Library
-This Python library provides functionality to work with delta volatility surfaces in finance. It includes tools for 
-reading data from CSV files, plotting surfaces in 3D, and converting between delta and moneyness volatility surfaces.
 This Python library provides functionalities to work with implied **volatility surfaces**. As is well known, volatility surfaces are two-dimensional grids 
 where one axis represents the *time to maturity*, and the other axis represents either moneyness (the ratio of the current asset price to
 the strike price) or delta (the rate of change of the option price concerning changes in the underlying asset price). Some volatility surfaces 
 providers prefer to represent surfaces respect to moneyness, while others respect to delta. This code contains a method that allows to convert
-the volatility surface  from being dependent on delta to being dependent on moneyness.
+the volatility surface from being dependent on delta to being dependent on moneyness.
 ![Alt Text](./images/ex_vol_on_delta.png)
 ![Alt Text](./images/ex_vol_on_moneyness.png)
 
@@ -27,6 +25,21 @@ Make sure you have the following dependencies installed:
 - `matplotlib`
 
 ## Usage and examples
+This section contains
+```python
+from VolatilitySurface import DeltaVolatilitySurface as DVF
+```
+
+```python
+    # Get and Plot Volatility from delta
+    path_vol_delta = r'data/ex_vol_on_delta.csv'
+    date_format = '%m/%d/%Y'
+    dvs = DVF.from_csv(path_vol_delta, # Path that contains the csv with the volatility respect to the delta 
+                       trade_date=date(2022, 1, 1), # Trade Date of observation of thevolatility
+                       header_conv=lambda x: int(x.replace(' D C', ''))/100, # Function to use to convert the header of the csv to a numeric delta 
+                       date_format=date_format) # Dates Format
+    dvs.plot()
+```
 
 # How to Convert Volatility Surface from Dependent on Delta to Dependent on Moneyness and vice-versa
 
