@@ -47,6 +47,7 @@ dvs = DVF.from_csv(path_vol_delta, # Path that contains the csv with the volatil
 dvs.plot()
 ```
 This is the plotted surface
+
 ![Alt Text](./images/ex_vol_on_delta.png)
 
 ```python
@@ -59,6 +60,7 @@ mon_vol_surf.plot()
 mon_vol_surf.to_csv(path_vol_moneyness)
 ```
 This is the converted plotted surface
+
 ![Alt Text](./images/ex_vol_on_moneyness.png)
 
 # Convert Delta Volatility Surface to be Dependent on Moneyness
