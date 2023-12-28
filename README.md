@@ -5,8 +5,6 @@ the strike price) or delta (the rate of change of the option price concerning ch
 providers prefer to represent surfaces respect to moneyness, while others respect to delta. This code contains a method that allows to convert
 the volatility surface from being dependent on delta to being dependent on moneyness.
 
-![Alt Text](./images/ex_vol_on_moneyness.png)
-
 ## Content
 The code contains the following files:
 - **VolatilitySurface.py**: this includes two classes:
@@ -50,6 +48,7 @@ dvs.plot()
 ```
 This is the plotted surface
 ![Alt Text](./images/ex_vol_on_delta.png)
+
 ```python
 # Conversion and plotting of the result
 path_vol_moneyness = r'data/ex_vol_on_moneyness.csv'
