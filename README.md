@@ -7,8 +7,8 @@ from dependent on delta to dependent on moneyness. A simple algorithm, based on 
 a focus on Balck's model for options on futures. Some empirical advice are also given, in order to improve the algorithm behaviour.
 We suppose to have a volatility surface dependent on delta, so we suppose to have $n\times k$ volatility points $s_{ij}$ defined for 
 delta $\tilde \Delta_i$ with $i = 1,...,n$ and for time-to-maturity $T_j$ with $j = 1 ... k$. Moreover we suppose to have an interpolation 
-function $\sigma$ such that $\sigma(\d_i, T_j) = \s_{ij}$. This function can be whatever we prefer to interpolate smiles of our volatility function 
-(linear interpolation, splines...). We define moneynesses $m_1, m_2, \ldots, m_h$ of our choice. We know that there exists a function
+function $\sigma$ such that $\sigma( \tilde \Delta_i, T_j) = s_{ij}$. This function can be whatever we prefer to interpolate smiles of our volatility function 
+(linear interpolation, splines...). We define moneynesses $m_1, m_2, ..., m_h$ of our choice. We know that there exists a function
 $\Delta = F(m, T, \sigma)$ which, given a time to maturity $T$, a maturity $m$ and a volatility $\sigma$, returns the associated $\Delta$. 
 Function $F$ can be easily derived from the option delta formula (for both Black and Scholes's model and Black's model). By substituting the 
 interpolation function in $\sigma$ we obtain that
@@ -43,7 +43,7 @@ where $r$ is the interest rate and $T$ the maturity of the option, $S$ the price
     \Delta(m, T, \sigma)= e^{-rT}\Phi(d_1(m, T, \sigma))
 \label{blk}
 ```
-We suppose to have a volatility surface depending on delta, i.e. an interpolation function $\sigma$ such that $\sigma(\Delta_i, T_j) =\s_ij$, and we suppose we have to convert the surface to be dependent on moneynesses $m_1, m_2, \ldots, m_n$. For each pair $(m_i, T_j)$ we have to find $\delta_{ij}$ such that
+We suppose to have a volatility surface depending on delta, i.e. an interpolation function $\sigma$ such that $\sigma(\Delta_i, T_j) =\s_ij$, and we suppose we have to convert the surface to be dependent on moneynesses $m_1, m_2, ..., m_n$. For each pair $(m_i, T_j)$ we have to find $\delta_{ij}$ such that
 ```math
 \delta_{ij}= e^{-rT}\Phi(d_1(m_i, T_j, \sigma(\delta_{ij}, T_j))
 ```
