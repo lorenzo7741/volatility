@@ -1,17 +1,20 @@
-```math
-\newcommand{\sij}{\Tilde{\sigma}_{ij}}
-\newcommand{\di}{\Tilde{\Delta}_{i}}
-```
-#How to Convert Volatility Surface from Dependent on Delta to Dependent on Moneyness and vice-versa
 
-#Summary
-This article is aimed at providing a general method to convert a volatility surface of vanilla European call options from dependent on delta to dependent on moneyness. A simple algorithm, based on the fixed point algorithm, is described, with a focus on Balck's model for options on futures. Some empirical advice are also given, in order to improve the algorithm behaviour.
+# How to Convert Volatility Surface from Dependent on Delta to Dependent on Moneyness and vice-versa
 
-
-We suppose to have a volatility surface dependent on delta, so we suppose to have $n\times k$ volatility points $\sij$ defined for delta $\Tilde{\Delta}_i$ with $i = 1,\dots,n$ and for time-to-maturity $T_j$ with $j = 1\dots k$. Moreover we suppose to have an interpolation function $\sigma$ such that $\sigma(\di, T_j) = \sij$. This function can be whatever we prefer to interpolate smiles of our volatility function (linear interpolation, splines...). We define moneynesses $m_1, m_2, \ldots, m_h$ of our choice. We know that there exists a function $\Delta = F(m, T, \sigma)$ which, given a time to maturity $T$, a maturity $m$ and a volatility $\sigma$, returns the associated $\Delta$. Function $F$ can be easily derived from the option delta formula (for both Black and Scholes's model and Black's model). By substituting the interpolation function in $\sigma$ we obtain that
+## Summary
+This article is aimed at providing a general method to convert a volatility surface of vanilla European call options
+from dependent on delta to dependent on moneyness. A simple algorithm, based on the fixed point algorithm, is described, with 
+a focus on Balck's model for options on futures. Some empirical advice are also given, in order to improve the algorithm behaviour.
+We suppose to have a volatility surface dependent on delta, so we suppose to have $n\times k$ volatility points $\sij$ defined for 
+delta $\tilde{\Delta}_i$ with $i = 1,\dots,n$ and for time-to-maturity $T_j$ with $j = 1\dots k$. Moreover we suppose to have an interpolation 
+function $\sigma$ such that $\sigma(\di, T_j) = \sij$. This function can be whatever we prefer to interpolate smiles of our volatility function 
+(linear interpolation, splines...). We define moneynesses $m_1, m_2, \ldots, m_h$ of our choice. We know that there exists a function
+$\Delta = F(m, T, \sigma)$ which, given a time to maturity $T$, a maturity $m$ and a volatility $\sigma$, returns the associated $\Delta$. 
+Function $F$ can be easily derived from the option delta formula (for both Black and Scholes's model and Black's model). By substituting the 
+interpolation function in $\sigma$ we obtain that
 ```math
     \Delta = F(m, T, \sigma(\Delta, T))
-\label{fct}
+    \label{fct}
 ```
 
 For each pair $m_i, T_j$ we look for $\delta_{ij}$ such that the following holds
