@@ -29,13 +29,16 @@ This section contains an example on how to instantiate a Volatility Surface depe
 **test.py**. Below a csv file, containing data of a volatility surface that depends on delta, is imported. This data are fake and randomly generatet,
 just for example purpose. The file imported is:
 ```
-data\ex_vol_on_delta.csv
+.\data\ex_vol_on_delta.csv
 ```
-Below how to import such a file as a DeltaVolatilitySurface
+Packages needed to execute this example code
 ```python
 from VolatilitySurface import DeltaVolatilitySurface as DVF
 from datetime import date
-
+import numpy as np
+```
+Below how to import and plot such a file as a DeltaVolatilitySurface
+```python
 # Get and Plot Volatility from delta
 path_vol_delta = r'data/ex_vol_on_delta.csv'
 date_format = '%m/%d/%Y'
@@ -45,10 +48,21 @@ dvs = DVF.from_csv(path_vol_delta, # Path that contains the csv with the volatil
                    date_format=date_format) # Dates Format
 dvs.plot()
 ```
-This code imports the volatility surface and plots it, like in the figure below
+This is the plotted surface
 ![Alt Text](./images/ex_vol_on_delta.png)
+```python
+# Conversion and plotting of the result
+path_vol_moneyness = r'data/ex_vol_on_moneyness.csv'
+moneyness_header = np.concatenate([np.array([0.01]), np.linspace(0.05, 0.95, num=19, endpoint=True), np.array([0.99])])
+interest_rate = 0.01
+mon_vol_surf = dvs.convert(moneyness_header, interest_rate)
+mon_vol_surf.plot()
+mon_vol_surf.to_csv(path_vol_moneyness)
+```
+This is the converted plotted surface
+![Alt Text](./images/ex_vol_on_moneyness.png)
 
-# How to Convert Volatility Surface from Dependent on Delta to Dependent on Moneyness and vice-versa
+# Convert Delta Volatility Surface to be Dependent on Moneyness
 
 ## Description of the general algorithm
 This article is aimed at providing a general method to convert a volatility surface of vanilla European call options
