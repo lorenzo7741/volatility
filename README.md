@@ -1,3 +1,19 @@
+# Volatility Surface Library
+This Python library provides functionality to work with delta volatility surfaces in finance. It includes tools for 
+reading data from CSV files, plotting surfaces in 3D, and converting between delta and moneyness volatility surfaces.
+This Python library provides functionalities to work with implied **volatility surfaces**. As is well known, volatility surfaces are two-dimensional grids 
+where one axis represents the *time to maturity*, and the other axis represents either moneyness (the ratio of the current asset price to
+the strike price) or delta (the rate of change of the option price concerning changes in the underlying asset price). Some volatility surfaces 
+providers prefer to represent surfaces respect to moneyness, while others respect to delta. This code contains a method that allows to convert the volatility surface
+from being dependent on delta to being dependent on moneyness.
+
+## Content
+The code contains the following files:
+- **VolatilitySurface.py**: this includes two classes:
+  - **DeltaVolatilitySurface**: a class that represents a volatility surface that is dependent on Delta 
+  - **MoneynessVolatilitySurface**: a class that represents a volatility surface that is dependent on Moneyness
+- 
+Make sure you have the following dependencies installed:
 
 # How to Convert Volatility Surface from Dependent on Delta to Dependent on Moneyness and vice-versa
 
