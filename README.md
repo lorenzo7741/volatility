@@ -4,7 +4,7 @@ where one axis represents the *time to maturity*, and the other axis represents 
 the strike price) or delta (the rate of change of the option price concerning changes in the underlying asset price). Some volatility surfaces 
 providers prefer to represent surfaces respect to moneyness, while others respect to delta. This code contains a method that allows to convert
 the volatility surface from being dependent on delta to being dependent on moneyness.
-![Alt Text](./images/ex_vol_on_delta.png)
+
 ![Alt Text](./images/ex_vol_on_moneyness.png)
 
 ## Content
@@ -25,21 +25,28 @@ Make sure you have the following dependencies installed:
 - `matplotlib`
 
 ## Usage and examples
-This section contains
+This section contains an example on how to instantiate a Volatility Surface dependent on delta and how to convert it. This example is the one contained in
+**test.py**. Below a csv file, containing data of a volatility surface that depends on delta, is imported. This data are fake and randomly generatet,
+just for example purpose. The file imported is:
+```
+data\ex_vol_on_delta.csv
+```
+Below how to import such a file as a DeltaVolatilitySurface
 ```python
 from VolatilitySurface import DeltaVolatilitySurface as DVF
-```
+from datetime import date
 
-```python
-    # Get and Plot Volatility from delta
-    path_vol_delta = r'data/ex_vol_on_delta.csv'
-    date_format = '%m/%d/%Y'
-    dvs = DVF.from_csv(path_vol_delta, # Path that contains the csv with the volatility respect to the delta 
-                       trade_date=date(2022, 1, 1), # Trade Date of observation of thevolatility
-                       header_conv=lambda x: int(x.replace(' D C', ''))/100, # Function to use to convert the header of the csv to a numeric delta 
-                       date_format=date_format) # Dates Format
-    dvs.plot()
+# Get and Plot Volatility from delta
+path_vol_delta = r'data/ex_vol_on_delta.csv'
+date_format = '%m/%d/%Y'
+dvs = DVF.from_csv(path_vol_delta, # Path that contains the csv with the volatility respect to the delta 
+                   trade_date=date(2022, 1, 1), # Trade Date of observation of thevolatility
+                   header_conv=lambda x: int(x.replace(' D C', ''))/100, # Function to use to convert the header of the csv to a numeric delta 
+                   date_format=date_format) # Dates Format
+dvs.plot()
 ```
+This code imports the volatility surface and plots it, like in the figure below
+![Alt Text](./images/ex_vol_on_delta.png)
 
 # How to Convert Volatility Surface from Dependent on Delta to Dependent on Moneyness and vice-versa
 
