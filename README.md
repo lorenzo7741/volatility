@@ -119,12 +119,19 @@ The volatility surface is
 in  where $\rho_{ij} = \sigma(\delta_{ij}, T_j)$.
 
 ## Empirical considerations
-As explained, the problem is reduced to solve a fixed point problem. One of the most popular and simple algorithm for the solution of the fixed point problem is the *fixed point algorithm*. If works as follows: let's suppose we have to find $x$ such that $f(x)=x$ where $f$ is a continuous function. Chosen an initial point $x_0$ we define
+As explained, the problem is reduced to solve a fixed point problem. One of the most popular and simple algorithm 
+for the solution of the fixed point problem is the *fixed point algorithm*. If works as follows: let's suppose we have to find 
+$x$ such that $f(x)=x$ where $f$ is a continuous function. Chosen an initial point $x_0$ we define
 ```math
     x_{n+1} = f(x_{n})
 ```
-It is obvious that if $x_n$ has limit, the limit is a fixed point for $f$. This simple algorithm is called fixed point algorithm. Under the assumption that $f$ is Lipschitz continuous in an interval $I$, with Lipschitz constant less that $1$, the fixed point algorithm converges to the unique fixed point of $f$, given $x_0 \in I$. Unfortunately, we can
-easily see that the function in \eqref{fct}, even though $\sigma$ is constant, is not Lipschitz continuous with Lipschitz constant less that $1$. Despite the convergence is not guaranteed for \eqref{fct}, the algorithm often converges with real data volatility in few iterations. This is due to the fact that \eqref{fct} is locally Lipschitz continuous if the volatility surface does not have strong variations in $\sigma_{ij}$. Therefore this algorithm is strongly recommended.
+It is obvious that if $x_n$ has limit, the limit is a fixed point for $f$. This simple algorithm is called fixed point algorithm. Under the
+assumption that $f$ is Lipschitz continuous in an interval $I$, with Lipschitz constant less that $1$, the fixed point algorithm converges 
+to the unique fixed point of $f$, given $x_0 \in I$. Unfortunately, we can easily see that the function $e^{-rT}\Phi(d_1(m, T, \sigma))$, even 
+though $\sigma$ is constant, is not Lipschitz continuous with Lipschitz constant less that $1$.
+Despite the convergence is not guaranteed, the algorithm often converges with real data volatility in few iterations. This is due 
+to the fact that $e^{-rT}\Phi(d_1(m, T, \sigma))$ is locally Lipschitz continuous if the volatility surface does not have *strong* variations in 
+$\sigma_{ij}$. Therefore the fixed point algorithm is strongly recommended.
 Some other empirical considerations:
 
 - **How to choose $x_0$**: It is easy to see that the delta in Black's Framework is less than $e^{-rT}$ since $\Phi$ is a cumulative density function and thus $\Phi<1$. Therefore $e^{-rT}\Phi(d_1)$ has a fixed point in $(0, e^{-rT})$ and we can set $x_0 = e^{-rT}$
