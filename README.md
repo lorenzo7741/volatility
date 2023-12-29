@@ -68,9 +68,10 @@ This is the converted plotted surface
 ## Description of the general algorithm
 This section is aimed at providing a general method to convert a volatility surface of vanilla European call options
 from being dependent on delta to be dependent on moneyness. A simple algorithm, based on the fixed point algorithm, is described, with 
-a focus on Balck's model for options on futures. Some empirical advice are also given, in order to improve the speed of the algorithm.
+a focus on Balck's model for options on futures. Moreover, some empirical advices, aimed at improving the speed of the algorithm, are described in the last section.
+
 We suppose to have a volatility surface dependent on delta, so we suppose to have $n\times k$ volatility points $\tilde \sigma_{ij}$ defined for 
-delta $\tilde \Delta_i$ with $i = 1,...,n$ and for time-to-maturity $T_j$ with $j = 1,\cdots,k$. Moreover we suppose to have an interpolation 
+delta $\tilde \Delta_i$ with $i = 1,...,n$ and for time-to-maturity $T_j$ with $j = 1,...,k$. Moreover we suppose to have an interpolation 
 function $\sigma$ such that $\sigma( \tilde \Delta_i, T_j) = \tilde \sigma_{ij}$. This function can be whatever we prefer to interpolate smiles of
 our volatility function (linear interpolation, splines...). We define moneynesses $m_1, m_2, ..., m_h$ of our choice. We know that there exists a function
 $\Delta = F(m, T, \sigma)$ which, given a time to maturity $T$, a maturity $m$ and a volatility $\sigma$, returns the associated $\Delta$. 
