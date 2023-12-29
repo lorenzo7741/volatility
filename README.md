@@ -73,7 +73,7 @@ a focus on Balck's model for options on futures. Moreover, some empirical advice
 We suppose to have a volatility surface dependent on delta, so we suppose to have $n\times k$ volatility points $\tilde \sigma_{ij}$ defined for 
 delta $\tilde \Delta_i$ with $i = 1,...,n$ and for time-to-maturity $T_j$ with $j = 1,...,k$. Moreover we suppose to have an interpolation 
 function $\sigma$ such that $\sigma( \tilde \Delta_i, T_j) = \tilde \sigma_{ij}$. This function can be whatever we prefer to interpolate smiles of
-our volatility function (linear interpolation, splines...). We define moneynesses $m_1, m_2, ..., m_h$ of our choice. We know that there exists a function
+our volatility function (linear interpolation, splines...). We define moneyness $m_1, m_2, ..., m_h$ of our choice. We know that there exists a function
 $\Delta = F(m, T, \sigma)$ which, given a time to maturity $T$, a maturity $m$ and a volatility $\sigma$, returns the associated $\Delta$. 
 Function $F$ can be easily derived from the option delta formula (for both Black and Scholes's model and Black's model). By substituting the 
 interpolation function in $\sigma$ we obtain that
@@ -107,12 +107,12 @@ the volatility of $S$. We define the moneyness $m = \frac{S}{K}$ and, from delta
     \Delta(m, T, \sigma)= e^{-rT}\Phi(d_1(m, T, \sigma))
 ```
 We suppose to have a volatility surface depending on delta, i.e. an interpolation function $\sigma$ such that $\sigma(\Delta_i, T_j) =\tilde \sigma_{ij}$, 
-and we suppose we have to convert the surface to be dependent on moneynesses $m_1, m_2, ..., m_h$. For each pair $(m_i, T_j)$ we have to find
+and we suppose we have to convert the surface to be dependent on moneyness $m_1, m_2, ..., m_h$. For each pair $(m_i, T_j)$ we have to find
 $\delta_{ij}$ such that
 ```math
     \delta_{ij}= e^{-rT}\Phi(d_1(m_i, T_j, \sigma(\delta_{ij}, T_j))
 ```
-Now the volatility surface, in $(m_i, T_j)\rightarrow\rho_{ij} $ where $\rho_{ij} = \sigma(\Delta_i, T_j)$. This defines the grid of points 
+Now the volatility surface, in $(m_i, T_j) \to \rho_{ij} $ where $\rho_{ij} = \sigma(\Delta_i, T_j)$. This defines the grid of points 
 of the volatility surface, but obviously, another interpolation funcion must be defined also for theese point. This means defining a function 
 $\rho(m, T)$ such that $\rho(m_i, T_j) = \rho_{ij}$. Once again all the choices among the interpolation algorithm are possible.
 
