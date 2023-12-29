@@ -112,9 +112,11 @@ $\delta_{ij}$ such that
 ```math
     \delta_{ij}= e^{-rT}\Phi(d_1(m_i, T_j, \sigma(\delta_{ij}, T_j))
 ```
-Now the volatility surface, in $(m_i, T_j) \rho_{ij}$ altro: $(m_i, T_j) \longrightarrow \rho_{ij} $ where $\rho_{ij} = \sigma(\Delta_i, T_j)$. This defines the grid of points 
-of the volatility surface, but obviously, another interpolation funcion must be defined also for theese point. This means defining a function 
-$\rho(m, T)$ such that $\rho(m_i, T_j) = \rho_{ij}$. Once again all the choices among the interpolation algorithm are possible.
+The volatility surface is
+```math
+  (m_i, T_j) \rightarrow \rho_{ij}
+```
+in  where $\rho_{ij} = \sigma(\delta_{ij}, T_j)$.
 
 ## Empirical considerations
 As explained, the problem is reduced to solve a fixed point problem. One of the most popular and simple algorithm for the solution of the fixed point problem is the *fixed point algorithm*. If works as follows: let's suppose we have to find $x$ such that $f(x)=x$ where $f$ is a continuous function. Chosen an initial point $x_0$ we define
