@@ -112,7 +112,7 @@ $\delta_{ij}$ such that
 ```math
     \delta_{ij}= e^{-rT}\Phi(d_1(m_i, T_j, \sigma(\delta_{ij}, T_j))
 ```
-Now the volatility surface, in $(m_i, T_j) \longrightarrow \rho_{ij} $ where $\rho_{ij} = \sigma(\Delta_i, T_j)$. This defines the grid of points 
+Now the volatility surface, in$(m_i, T_j) \rightarrow \rho_{ij}$ altro: $(m_i, T_j) \longrightarrow \rho_{ij} $ where $\rho_{ij} = \sigma(\Delta_i, T_j)$. This defines the grid of points 
 of the volatility surface, but obviously, another interpolation funcion must be defined also for theese point. This means defining a function 
 $\rho(m, T)$ such that $\rho(m_i, T_j) = \rho_{ij}$. Once again all the choices among the interpolation algorithm are possible.
 
